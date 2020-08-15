@@ -986,3 +986,14 @@ format-background = ${colors.background}
 
 ###############################################################################
 # vim:ft=dosini
+
+[module/picom]
+type = custom/script
+exec = ~/.config/polybar/scripts/picom_status.sh
+click-left = ~/.config/polybar/scripts/picom_toggle.sh 
+interval=0.5
+format-prefix = " "  
+format-foreground = ${colors.foreground}
+format-background = ${colors.background}
+format-underline = #AD69AF
+
