@@ -16,6 +16,8 @@ Here are my dotfiles for my 13-inch HP Spectre x360 (2017).
 
 # Requirements
 
+If you are on a fresh install on Arch, use :
+
 ```bash
 sudo pacman -S xorg-xinit xorg-server xorg-xrandr i3-gaps ttf-dejavu git base-devel dmenu ttf-ubuntu-font-family ttf-font-awesome python-pip archlinux-keyring xfce4-terminal firefox feh imagemagick xorg-xprop
 ```
@@ -31,6 +33,13 @@ git clone https://aur.archlinux.org/nerd-fonts-ubuntu-mono
 ```
 
 and you need to ``makepkg -si`` in each folder.
+
+# Installations
+
+```bash
+cd Dotfiles/
+cp -r i3 polybar picom ~/.config/
+```
 
 # To-Do
 
