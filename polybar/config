@@ -121,7 +121,7 @@ font-4 = "Font Awesome 5 Brands:pixelsize=8;1"
 
 modules-left = i3 xwindow
 modules-center = spotify
-modules-right = arrow-network networkspeedup networkspeeddown arrow-memory memory arrow-cpu cpu arrow-battery battery delimiter temperature-cpu delimiter temperature-nvme delimiter date
+modules-right = arrow-network networkspeedup networkspeeddown arrow-memory memory arrow-cpu cpu arrow-battery battery delimiter temperature-cpu delimiter temperature-nvme delimiter picom delimiter date
 
 tray-position = right
 tray-detached = false
@@ -996,4 +996,3 @@ format-prefix = " "
 format-foreground = ${colors.foreground}
 format-background = ${colors.background}
 format-underline = #AD69AF
-
