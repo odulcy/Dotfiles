@@ -38,7 +38,7 @@ and you need to ``makepkg -si`` in each folder.
 
 ```bash
 cd Dotfiles/
-cp -r i3 polybar picom ~/.config/
+cp -r i3 polybar picom alacritty ~/.config/
 ```
 
 # To-Do
