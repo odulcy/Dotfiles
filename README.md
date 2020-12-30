@@ -6,7 +6,7 @@ Here are my dotfiles for my 13-inch HP Spectre x360 (2017).
 - Window Manager : ``i3``
 - Bar : ``polybar``
 - Web browser : ``Firefox``
-- Terminal : ``xfce4-terminal``
+- Terminal : ``alacritty``
 - Others : ``picom``, ``bashtop``
 
 # Screenshot
@@ -39,6 +39,24 @@ and you need to ``makepkg -si`` in each folder.
 ```bash
 cd Dotfiles/
 cp -r i3 polybar picom alacritty ~/.config/
+```
+
+# Others
+## Firefox
+
+To have a precise scrolling on Firefox like on Chromium,
+you can add this environment variable :
+
+```bash
+# ~/.bash_profile
+export MOZ_USE_XINPUT2=1
+```
+
+To have firefox in full screen inside an i3 container,
+go to Firefox options (visit ``about:config``) then
+modify this option :
+```
+full-screen-api.ignore-widgets : True
 ```
 
 # To-Do
