@@ -222,8 +222,12 @@ exec_always --no-startup-id picom --config ~/.config/picom/picom.conf -b
 exec setxkbmap fr
 
 #### polybar
-#exec_always --no-startup-id  ~/.config/polybar/start_polybar.sh
+exec_always --no-startup-id  ~/.config/polybar/start_polybar.sh
 
 #### succade/lemonbar
 #https://github.com/domsson/succade
-exec_always --no-startup-id ~/.config/succade/start_succade.sh
+#exec_always --no-startup-id ~/.config/succade/start_succade.sh
+
+#### trayer
+#exec_always --no-startup-id ~/.config/i3/start_trayer.sh
+#for_window [class="trayer"] border pixel 0

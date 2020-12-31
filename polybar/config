@@ -78,13 +78,13 @@ volume-max = #bf616a
 ;https://github.com/jaagr/polybar/wiki/Configuration
 
 monitor = eDP-1
-;monitor-fallback = HDMI1
+monitor-fallback = DP-2
 monitor-strict = false
 override-redirect = false
 bottom = false
 fixed-center = true
 width = 100%
-height = 20
+height = 30
 ;offset-x = 1%
 ;offset-y = 1%
 
@@ -113,15 +113,15 @@ module-margin-left = 0
 module-margin-right = 0
 
 ;https://github.com/jaagr/polybar/wiki/Fonts
-font-0 = "UbuntuMono Nerd Font:size=10;2"
-font-1 = "UbuntuMono Nerd Font:size=16;3"
-font-2 = "Font Awesome 5 Free:style=Regular:pixelsize=8;1"
-font-3 = "Font Awesome 5 Free:style=Solid:pixelsize=8;1"
-font-4 = "Font Awesome 5 Brands:pixelsize=8;1"
+font-0 = "UbuntuMono Nerd Font:size=12;2"
+font-1 = "UbuntuMono Nerd Font:size=12;3"
+font-2 = "Font Awesome 5 Free:style=Regular:pixelsize=12;1"
+font-3 = "Font Awesome 5 Free:style=Solid:pixelsize=12;1"
+font-4 = "Font Awesome 5 Brands:pixelsize=12;1"
 
-modules-left = i3 xwindow
-modules-center = spotify
-modules-right = arrow-network networkspeedup networkspeeddown arrow-memory memory arrow-cpu cpu arrow-battery battery delimiter temperature-cpu delimiter temperature-nvme delimiter picom delimiter date
+modules-left = i3
+modules-center = date
+modules-right = networkspeedup networkspeeddown delimiter memory delimiter cpu delimiter battery delimiter backlight delimiter temperature-cpu delimiter 
 
 tray-position = right
 tray-detached = false
@@ -129,7 +129,7 @@ tray-maxsize = 20
 tray-background = ${colors.background}
 tray-offset-x = 0
 tray-offset-y = 0
-tray-padding = 4
+tray-padding = 0
 tray-scale = 1.0
 
 #i3: Make the bar appear below windows
@@ -214,16 +214,16 @@ fuzzy-match = false
 ;extra icons to choose from
 ;http://fontawesome.io/cheatsheet/
 ;       v     
-ws-icon-0 = 1;
-ws-icon-1 = 2;
-ws-icon-2 = 3;
-ws-icon-3 = 4;
-ws-icon-4 = 5;
-ws-icon-5 = 6;
-ws-icon-6 = 7;
-ws-icon-7 = 8;
-ws-icon-8 = 9;
-ws-icon-9 = 10;
+ws-icon-0 = 1;
+ws-icon-1 = 2;
+ws-icon-2 = 3;
+ws-icon-3 = 4;
+ws-icon-4 = 5;
+ws-icon-5 = 6;
+ws-icon-6 = 7;
+ws-icon-7 = 8;
+ws-icon-8 = 9;
+ws-icon-9 = 10;
 ws-icon-default = " "
 
 ; Available tags:
@@ -332,8 +332,7 @@ content-background = ${colors.background}
 
 [module/delimiter]
 type = custom/text
-content = " "
-content-font = 2
+content = "  "
 content-foreground = #30335e
 content-background = ${colors.background}
 
@@ -341,19 +340,6 @@ content-background = ${colors.background}
 ###############################################################################
 ############                     OTHER MODULES                     ############
 ################################################################################
-################################################################################
-
-################################################################################
-
-[module/backlight-acpi]
-inherit = module/xbacklight
-type = internal/backlight
-card = intel_backlight
-format-foreground = ${colors.foreground}
-format-background = ${colors.background}
-format-prefix-foreground = #7D49B6
-format-prefix-underline = #7D49B6
-format-underline = #7D49B6
 ################################################################################
 
 [module/backlight]
@@ -370,8 +356,10 @@ card = intel_backlight
 ;   <ramp>
 ;   <bar>
 format = <label>
+format-prefix = " "
 format-foreground = ${colors.foreground}
 format-background = ${colors.background}
+format-underline = #9f78e1
 
 ; Available tokens:
 ;   %percentage% (default)
@@ -456,8 +444,11 @@ type = internal/cpu
 ; Seconds to sleep between updates
 ; Default: 1
 interval = 1
-format-foreground = #fefefe
-format-background = #656ab9
+;format-foreground = #fefefe
+;format-background = #656ab9
+format-foreground = ${colors.foreground}
+format-background = ${colors.background}
+format-underline = #8d62ad
 ;format-background = #8d62ad
 format-prefix = "  "
 format-prefix-foreground = #fefefe
@@ -484,69 +475,17 @@ label = %percentage:3%%
 ;https://github.com/jaagr/polybar/wiki/Module:-date
 type = internal/date
 ; Seconds to sleep between updates
-interval = 5
+interval = 1
 ; See "http://en.cppreference.com/w/cpp/io/manip/put_time" for details on how to format the date string
 ; NOTE: if you want to use syntax tags here you need to use %%{...}
-date = " %d/%m/%y "
-date-alt = " %a %d %b %Y"
-time = %H:%M
-time-alt = %H:%M
-format-prefix = " "
+#date = " %d/%m/%y "
+#date-alt = " %a %d %b %Y"
+time = %H:%M:%S
+#format-prefix = " "
 format-prefix-foreground = #fefefe
 format-foreground = ${colors.foreground}
 format-background = ${colors.background}
 label = "%date% %time% "
-
-#################################################################
-
-[module/ewmh]
-type = internal/xworkspaces
-
-pin-workspaces = false
-enable-click = true
-enable-scroll = true
-reverse-scroll = true
-
-;extra icons to choose from
-;http://fontawesome.io/cheatsheet/
-;       v     
-
-icon-0 = 1;
-icon-1 = 2;
-icon-2 = 3;
-icon-3 = 4;
-icon-4 = 5;
-icon-5 = 6;
-icon-6 = 7;
-icon-7 = 8;
-#icon-8 = 9;
-#icon-9 = 10;
-#icon-default = " "
-format = <label-state>
-label-monitor = %name%
-
-label-active = %name%
-label-active-foreground = ${colors.foreground}
-label-active-background = ${colors.background}
-label-active-underline= #6790eb
-label-active-padding = 1
-
-label-occupied = %name%
-label-occupied-background = ${colors.background}
-label-occupied-padding = 1
-
-label-urgent = %name%
-label-urgent-foreground = ${colors.foreground}
-label-urgent-background = ${colors.alert}
-label-urgent-underline = ${colors.alert}
-label-urgent-padding = 1
-
-label-empty = %name%
-label-empty-foreground = ${colors.foreground}
-label-empty-padding = 1
-format-foreground = ${colors.foreground}
-format-background = ${colors.background}
-
 
 ################################################################################
 
@@ -604,23 +543,6 @@ format-unmounted-background = ${colors.background}
 
 ################################################################################
 
-[module/load-average]
-type = custom/script
-exec = uptime | grep -ohe 'load average[s:][: ].*' | awk '{ print $3" "$4" "$5"," }' | sed 's/,//g'
-interval = 100
-
-;HOW TO SET IT MINIMAL 10 CHARACTERS - HIDDEN BEHIND SYSTEM ICONS
-;label = %output%
-label = %output:10%
-
-format-foreground = ${colors.foreground}
-format-background = ${colors.background}
-format-prefix = "  "
-format-prefix-foreground = #62FF00
-format-underline = #62FF00
-
-################################################################################
-
 [module/memory]
 ;https://github.com/jaagr/polybar/wiki/Module:-memory
 type = internal/memory
@@ -639,9 +561,9 @@ label =  %gb_used%/%gb_free%
 format = <label>
 format-prefix = "   "
 format-prefix-foreground = #fefefe
-format-foreground = #fefefe
-;format-background = #668bd7
-format-background = #30335e
+format-foreground = ${colors.foreground}
+format-background = ${colors.background}
+format-underline = #0398fc
 
 ################################################################################
 
@@ -653,9 +575,11 @@ label-connected = "%upspeed:7%"
 format-connected = <label-connected>
 format-connected-prefix = " "
 format-connected-prefix-foreground = #fefefe
-format-connected-foreground = #fefefe
-;format-connected-background = #f56023
-format-connected-background = #a85c69
+;format-connected-foreground = #fefefe
+;format-connected-background = #a85c69
+format-connected-foreground = ${colors.foreground}
+format-connected-background = ${colors.background}
+format-connected-underline = #a85c69
 
 ################################################################################
 
@@ -667,9 +591,11 @@ label-connected = "%downspeed:7%"
 format-connected = <label-connected>
 format-connected-prefix = "  "
 format-connected-prefix-foreground = #fefefe
-format-connected-foreground = #fefefe
-;format-connected-background = #8d62ad
-format-connected-background = #a85c69
+;format-connected-foreground = #fefefe
+;format-connected-background = #a85c69
+format-connected-foreground = ${colors.foreground}
+format-connected-background = ${colors.background}
+format-connected-underline = #a85c69
 
 ################################################################################
 
@@ -685,36 +611,6 @@ format-prefix = "   "
 format-suffix = " "
 format-prefix-foreground = #FFBB00
 
-
-################################################################################
-
-[module/spotify]
-;https://github.com/Jvanrhijn/polybar-spotify
-type = custom/script
-interval = 1
-format-prefix = "   "
-format-suffix = " "
-format = <label>
-exec = python3 ~/.config/polybar/scripts/spotify_status.py -f '{artist}: {song}'
-format-underline = #1db954
-format-foreground = ${colors.foreground}
-format-background = ${colors.background}
-
-
-[module/spotify1]
-;https://github.com/NicholasFeldman/dotfiles/blob/master/polybar/.config/polybar/spotify.sh
-type = custom/script
-exec = ~/.config/polybar/scripts/spotify1.sh
-interval = 1
-
-;format = <label>
-format-foreground = ${colors.foreground}
-format-background = ${colors.background}
-format-padding = 2
-format-underline = #0f0
-format-prefix = "  "
-format-prefix-foreground = #0f0
-label = %output:0:150%
 
 ################################################################################
 
@@ -737,55 +633,6 @@ hwmon-path = ${env:HWMON_PATH}
 
 warn-temperature = 65
 format = <ramp> <label>
-format-foreground = ${colors.foreground}
-format-background = ${colors.background}
-format-underline = #c72581
-format-warn = <label-warn>
-format-warn-underline = #c7254f
-label = %temperature%
-label-warn =  %temperature%
-label-warn-foreground = #ffffff
-format-warn-background = #c7254f
-
-ramp-0 = 
-ramp-1 = 
-ramp-2 = 
-ramp-3 = 
-ramp-4 = 
-ramp-foreground =${colors.foreground}
-
-################################################################################
-
-[module/temperature-nvme]
-;https://github.com/jaagr/polybar/wiki/Module:-temperature
-type = internal/temperature
-; Thermal zone to use
-; To list all the zone types, run
-; $ for i in /sys/class/thermal/thermal_zone*; do echo "$i: $(<$i/type)"; done
-; Default: 0
-thermal-zone = 0
-
-; Full path of temperature sysfs path
-; Use `sensors` to find preferred temperature source, then run
-; $ for i in /sys/class/hwmon/hwmon*/temp*_input; do echo "$(<$(dirname $i)/name): $(cat ${i%_*}_label 2>/dev/null || echo $(basename ${i%_*})) $(readlink -f $i)"; done
-; to find path to desired file
-; Default reverts to thermal zone setting
-;
-; HP Spectre x360 (2017)
-;
-;acpitz: temp1 /sys/devices/virtual/thermal/thermal_zone0/hwmon0/temp1_input
-;nvme: Composite /sys/devices/pci0000:00/0000:00:1d.0/0000:6d:00.0/hwmon/hwmon1/temp1_input
-;nvme: Sensor 1 /sys/devices/pci0000:00/0000:00:1d.0/0000:6d:00.0/hwmon/hwmon1/temp2_input
-;pch_skylake: temp1 /sys/devices/virtual/thermal/thermal_zone5/hwmon3/temp1_input
-;coretemp: Package id 0 /sys/devices/platform/coretemp.0/hwmon/hwmon6/temp1_input
-;coretemp: Core 0 /sys/devices/platform/coretemp.0/hwmon/hwmon6/temp2_input
-;coretemp: Core 1 /sys/devices/platform/coretemp.0/hwmon/hwmon6/temp3_input
-;iwlwifi_1: temp1 /sys/devices/virtual/thermal/thermal_zone8/hwmon7/temp1_input
-;
-hwmon-path = /sys/devices/pci0000:00/0000:00:1d.0/0000:6d:00.0/hwmon/hwmon1/temp2_input
-
-warn-temperature = 60
-format = <label>
 format-foreground = ${colors.foreground}
 format-background = ${colors.background}
 format-underline = #c72581
@@ -991,8 +838,19 @@ format-background = ${colors.background}
 type = custom/script
 exec = ~/.config/polybar/scripts/picom_status.sh
 click-left = ~/.config/polybar/scripts/picom_toggle.sh 
-interval=0.5
+interval=1
 format-prefix = " "  
 format-foreground = ${colors.foreground}
 format-background = ${colors.background}
 format-underline = #AD69AF
+
+
+######
+# Keyboard on i3
+[module/touchkeyboard]
+;; Open onscreen keyboard (onboard)
+type=custom/text
+content="      "
+content-foreground = ${colors.foreground}
+content-background = ${colors.background}
+click-left= dbus-send --type=method_call --print-reply --dest=org.onboard.Onboard /org/onboard/Onboard/Keyboard org.onboard.Onboard.Keyboard.ToggleVisible
