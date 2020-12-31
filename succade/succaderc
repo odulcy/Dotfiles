@@ -1,0 +1,45 @@
+[bar]
+name = "tuxae"
+blocks = "desktop | time | cpu-temp battery date"
+height = 24
+underline = true
+font = "10"
+label-font = "Font Awesome 5 Free"
+background = "#292d3e"
+
+[default]
+margin = 4
+padding = 2
+foreground = "#dddddd"
+background = "#292d3e"
+label-foreground = "#333333"
+
+[desktop]
+command = "echo $(~/.config/succade/workspace.succade)"
+trigger = "i3-msg -t subscribe -m '[ "workspace" ]'"
+margin-left = 8
+
+[cpu-temp]
+command = "echo $(sensors -u|grep temp1_input|head -n1|cut -d: -f2|cut -d. -f1)°C"
+interval = 2
+label = "  "
+label-background = "#ed281a"
+
+[battery]
+command = "echo $(acpi --battery | cut -d, -f2-|head -n1)"
+interval = 5
+label = "  "
+label-background = "#5a8fcd"
+
+[time]
+command = "date +'%H:%M:%S'"
+interval = 1
+;label = "  "
+;label-background = "#b683c3"
+
+[date]
+command = "date +'%d-%m-%Y'"
+interval = 1
+label = "  "
+label-background = "#b683c3"
+margin-right = 8

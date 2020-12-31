@@ -1,0 +1,19 @@
+#! /bin/bash
+
+parse_json () {
+	echo $(echo $1|grep -o "\"$2\":[a-z0-9]*"|cut -d: -f2)
+}
+
+i3_output=$(i3-msg -t get_workspaces|grep -o '{[^}]*}')
+
+for workspace in $i3_output;do
+	
+	num=$(parse_json $workspace num)
+	focused=$(parse_json $workspace focused)
+
+	echo -n " $num"
+	if [ $focused == "true" ]; then
+		echo -n '*'
+	fi
+	echo -n " |"
+done
