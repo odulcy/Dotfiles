@@ -13,7 +13,7 @@ set $mod Mod1
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:monospace 8
+font pango:monospace 12
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -35,7 +35,7 @@ exec --no-startup-id nm-applet
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec xfce4-terminal
+bindsym $mod+Return exec alacritty
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -155,10 +155,10 @@ mode "resize" {
         bindsym semicolon resize grow width 10 px or 10 ppt
 
         # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+        bindsym Left resize shrink width 2 px or 2 ppt
+        bindsym Down resize grow height 2 px or 2 ppt
+        bindsym Up resize shrink height 2 px or 2 ppt
+        bindsym Right resize grow width 2 px or 2 ppt
 
         # back to normal: Enter or Escape or $mod+r
         bindsym Return mode "default"
@@ -184,6 +184,11 @@ bindsym $mod+Ctrl+l exec --no-startup-id i3lock -i ~/.config/i3/backgrounds/Tuxa
 bindsym $mod+Ctrl+p exec --no-startup-id i3lock -i ~/.config/i3/backgrounds/Tuxae.png && sleep 0.5 && systemctl suspend
 bindsym $mod+Ctrl+h exec --no-startup-id i3lock -i ~/.config/i3/backgrounds/Tuxae.png && sleep 0.5 && systemctl hibernate
 
+## Rotate
+
+bindsym $mod+Ctrl+u exec --no-startup-id ~/.config/i3/portrait.sh
+bindsym $mod+Ctrl+i exec --no-startup-id ~/.config/i3/landscape.sh
+
 ## Scratchpad
 
 # Make the currently focused window a scratchpad
@@ -207,7 +212,7 @@ client.urgent           #2f343a #900000 #ffffff #900000   #900000
 client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 
 #### feh
-exec_always --no-startup-id feh --bg-center ~/.config/i3/backgrounds/Tuxae.png
+exec_always --no-startup-id feh --bg-fill ~/.config/i3/backgrounds/Tuxae.png
 
 #### picom
 exec_always --no-startup-id picom --config ~/.config/picom/picom.conf -b
@@ -217,4 +222,8 @@ exec_always --no-startup-id picom --config ~/.config/picom/picom.conf -b
 exec setxkbmap fr
 
 #### polybar
-exec_always --no-startup-id  ~/.config/polybar/start_polybar.sh
+#exec_always --no-startup-id  ~/.config/polybar/start_polybar.sh
+
+#### succade/lemonbar
+#https://github.com/domsson/succade
+exec_always --no-startup-id ~/.config/succade/start_succade.sh
