@@ -64,6 +64,33 @@ modify this option :
 full-screen-api.ignore-widgets : True
 ```
 
+## Touchpad
+
+```bash
+sudo pacman -S xf86-input-synaptics
+sudo cp /usr/share/X11/xorg.conf.d/70-synaptics.conf /etc/X11/xorg.conf.d
+```
+
+Edit ``/etc/X11/xorg.conf.d/70-synaptic.conf``
+
+```bash
+Section "InputClass"
+        Identifier "touchpad catchall"
+        Driver "synaptics"
+        MatchIsTouchpad "on"
+
+	# For natural scrolling
+	Option "VertScrollDelta"  "-111"
+	Option "HorizScrollDelta" "-111"
+
+	# Tap to click
+	Option "TapButton1" "1"
+
+	# Two finger tap to Right click
+	Option "TapButton2" "3"
+EndSection
+```
+
 # To-Do
 
 - Add a ``.vimrc``
