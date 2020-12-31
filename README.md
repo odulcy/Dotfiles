@@ -4,7 +4,7 @@ Here are my dotfiles for my 13-inch HP Spectre x360 (2017).
 
 - Operating System : ``Arch Linux``
 - Window Manager : ``i3``
-- Bar : ``succade`` (lemonbar)
+- Bar : ``polybar``
 - Web browser : ``Firefox``
 - Terminal : ``alacritty``
 - Others : ``picom``, ``bashtop``
@@ -31,7 +31,7 @@ git clone https://aur.archlinux.org/siji-git
 git clone https://aur.archlinux.org/ttf-unifont
 git clone https://aur.archlinux.org/nerd-fonts-ubuntu-mono
 git clone https://aur.archlinux.org/pod2man
-git clone https://aur.archlinux.org/lemonbar-xft-git
+git clone https://aur.archlinux.org/lemonbar-xft-git "Optional, if you want to use lemonbar instead of polybar
 ```
 
 and you need to ``makepkg -si`` in each folder.
