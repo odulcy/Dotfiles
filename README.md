@@ -4,7 +4,7 @@ Here are my dotfiles for my 13-inch HP Spectre x360 (2017).
 
 - Operating System : ``Arch Linux``
 - Window Manager : ``i3``
-- Bar : ``polybar``
+- Bar : ``succade`` (lemonbar)
 - Web browser : ``Firefox``
 - Terminal : ``alacritty``
 - Others : ``picom``, ``bashtop``
@@ -30,6 +30,8 @@ git clone https://aur.archlinux.org/polybar
 git clone https://aur.archlinux.org/siji-git
 git clone https://aur.archlinux.org/ttf-unifont
 git clone https://aur.archlinux.org/nerd-fonts-ubuntu-mono
+git clone https://aur.archlinux.org/pod2man
+git clone https://aur.archlinux.org/lemonbar-xft-git
 ```
 
 and you need to ``makepkg -si`` in each folder.
@@ -38,8 +40,11 @@ and you need to ``makepkg -si`` in each folder.
 
 ```bash
 cd Dotfiles/
-cp -r i3 polybar picom alacritty ~/.config/
+cp -r i3 succade picom alacritty ~/.config/
 ```
+
+You also need to compile ``succade`` and copy the binary in ``.config/succade/``
+Please visit [succade repository](https://github.com/domsson/succade).
 
 # Others
 ## Firefox
