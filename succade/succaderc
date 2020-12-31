@@ -1,6 +1,6 @@
 [bar]
 name = "tuxae"
-blocks = "desktop | time | cpu-temp battery date"
+blocks = "desktop | time | cpu-temp battery date empty-space-trayer"
 height = 24
 underline = true
 font = "10"
@@ -15,18 +15,18 @@ background = "#292d3e"
 label-foreground = "#333333"
 
 [desktop]
-command = "echo $(~/.config/succade/workspace.succade)"
+command = "~/.config/succade/workspace.succade"
 trigger = "i3-msg -t subscribe -m '[ "workspace" ]'"
 margin-left = 8
 
 [cpu-temp]
-command = "echo $(sensors -u|grep temp1_input|head -n1|cut -d: -f2|cut -d. -f1)°C"
+command = "~/.config/succade/cpu-temp.succade"
 interval = 2
 label = "  "
 label-background = "#ed281a"
 
 [battery]
-command = "echo $(acpi --battery | cut -d, -f2-|head -n1)"
+command = "~/.config/succade/battery.succade"
 interval = 5
 label = "  "
 label-background = "#5a8fcd"
@@ -42,4 +42,8 @@ command = "date +'%d-%m-%Y'"
 interval = 1
 label = "  "
 label-background = "#b683c3"
-margin-right = 8
+
+[empty-space-trayer]
+command = "~/.config/succade/trayer.succade"
+interval = 1
+;trigger = "xprop -name panel -f WM_SIZE_HINTS 32i ' $5\n' -spy WM_NORMAL_HINTS"

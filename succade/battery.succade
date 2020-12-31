@@ -1,0 +1,1 @@
+echo $(acpi --battery | cut -d, -f2-|head -n1)

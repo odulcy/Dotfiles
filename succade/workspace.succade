@@ -4,16 +4,17 @@ parse_json () {
 	echo $(echo $1|grep -o "\"$2\":[a-z0-9]*"|cut -d: -f2)
 }
 
-i3_output=$(i3-msg -t get_workspaces|grep -o '{[^}]*}')
+workspaces=$(i3-msg -t get_workspaces|grep -o '{[^}]*}')
+output=""
 
-for workspace in $i3_output;do
-	
+for workspace in $workspaces;do
 	num=$(parse_json $workspace num)
 	focused=$(parse_json $workspace focused)
 
-	echo -n " $num"
+	output="$output $num"
 	if [ $focused == "true" ]; then
-		echo -n '*'
+		output="$output*"
 	fi
-	echo -n " |"
+	output="$output |"
 done
+echo "$output"

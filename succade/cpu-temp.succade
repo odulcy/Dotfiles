@@ -1,0 +1,1 @@
+echo $(sensors -u|grep temp1_input|head -n1|cut -d: -f2|cut -d. -f1)°C
