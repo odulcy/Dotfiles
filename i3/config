@@ -224,6 +224,10 @@ exec setxkbmap fr
 #### polybar
 exec_always --no-startup-id  ~/.config/polybar/start_polybar.sh
 
+#### spice-vdagent
+#exec_always --no-startup-id spice-vdagent
+#bindsym $mod+Shift+t exec xrandr --output Virtual-1 --auto
+
 #### succade/lemonbar
 #https://github.com/domsson/succade
 #exec_always --no-startup-id ~/.config/succade/start_succade.sh

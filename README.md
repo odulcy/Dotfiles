@@ -19,7 +19,7 @@ Here are my dotfiles for my 13-inch HP Spectre x360 (2017).
 If you are on a fresh install on Arch, use :
 
 ```bash
-sudo pacman -S xorg-xinit xorg-server xorg-xrandr i3-gaps ttf-dejavu git base-devel dmenu ttf-ubuntu-font-family ttf-font-awesome python-pip archlinux-keyring xfce4-terminal firefox feh imagemagick xorg-xprop
+sudo pacman -S xorg-xinit xorg-server xorg-xrandr i3-gaps ttf-dejavu git base-devel dmenu ttf-ubuntu-font-family ttf-font-awesome python-pip archlinux-keyring alacritty firefox feh imagemagick xorg-xprop
 ```
 
 Then,
@@ -40,7 +40,7 @@ and you need to ``makepkg -si`` in each folder.
 
 ```bash
 cd Dotfiles/
-cp -r i3 succade picom alacritty ~/.config/
+cp -r i3 polybar picom alacritty ~/.config/
 ```
 
 You also need to compile ``succade`` and copy the binary in ``.config/succade/``
@@ -91,11 +91,27 @@ Section "InputClass"
 EndSection
 ```
 
-# To-Do
+## Arch in a VM
 
-- Add a ``.vimrc``
-- Customize ``PS1``
+This configuration also works in a Virtual Machine with Arch as guest OS on Proxmox.
+You can use it through SPICE by installing few more things :
 
+```bash
+sudo pacman -S qemu-guest-agent spice-vdagent
+sudo systemctl enable qemu-guest-agent
+```
+
+At the time of writing, there is no spice-vdagent service working with systemd.
+spice-vdagent is started by i3. Also, GNOME is the only Desktop Environment
+with  autoresize for Remote Viewer. A bindsym has been added to the i3
+config file to trigger an autoresize.
+To enable both features, please uncomment those lines at the end of the config file :
+
+```bash
+#### spice-vdagent
+#exec_always --no-startup-id spice-vdagent
+#bindsym $mod+Shift+t exec xrandr --output Virtual-1 --auto
+```
 
 # Credits
 
