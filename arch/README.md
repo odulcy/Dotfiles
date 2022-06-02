@@ -11,8 +11,8 @@ Here are my dotfiles for my 13-inch HP Spectre x360 (2017).
 
 # Screenshot
 
-![Screenshot1](/Screenshot_1.png?raw=true "My workspace")
-![Screenshot2](/Screenshot_2.png?raw=true "My workspace")
+![Screenshot1](Screenshot_1.png?raw=true "My workspace")
+![Screenshot2](Screenshot_2.png?raw=true "My workspace")
 
 # Requirements
 
