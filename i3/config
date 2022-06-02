@@ -169,6 +169,7 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 #######  Shortcuts
+# https://superuser.com/a/1393488
 bindsym XF86MonBrightnessDown exec echo $(expr $(cat /sys/class/backlight/intel_backlight/actual_brightness) - 50)  > /sys/class/backlight/intel_backlight/brightness
 bindsym XF86MonBrightnessUp exec echo $(expr $(cat /sys/class/backlight/intel_backlight/actual_brightness) + 50)  > /sys/class/backlight/intel_backlight/brightness
 
