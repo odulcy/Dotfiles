@@ -78,7 +78,7 @@ volume-max = #bf616a
 ;https://github.com/jaagr/polybar/wiki/Configuration
 
 monitor = eDP-1
-monitor-fallback = DP-2
+;monitor-fallback = DP-1
 monitor-strict = false
 override-redirect = false
 bottom = false
@@ -117,7 +117,90 @@ font-0 = "UbuntuMono Nerd Font:size=12;2"
 font-1 = "UbuntuMono Nerd Font:size=12;3"
 font-2 = "FontAwesome:style=Regular"
 
-modules-left = i3
+modules-left = i3 cac40
+modules-center = date
+modules-right = wireless-network delimiter networkspeedup networkspeeddown delimiter memory delimiter cpu delimiter battery delimiter backlight delimiter temperature-cpu delimiter 
+
+tray-position = right
+tray-detached = false
+tray-maxsize = 20
+tray-background = ${colors.background}
+tray-offset-x = 0
+tray-offset-y = 0
+tray-padding = 0
+tray-scale = 1.0
+
+#i3: Make the bar appear below windows
+;wm-restack = i3
+;override-redirect = true
+
+; Enable support for inter-process messaging
+; See the Messaging wiki page for more details.
+enable-ipc = true
+
+; Fallback click handlers that will be called if
+; there's no matching module handler found.
+click-left =
+click-middle =
+click-right =
+scroll-up = i3wm-wsnext
+scroll-down = i3wm-wsprev
+double-click-left =
+double-click-middle =
+double-click-right =
+
+; Requires polybar to be built with xcursor support (xcb-util-cursor)
+; Possible values are:
+; - default   : The default pointer as before, can also be an empty string (default)
+; - pointer   : Typically in the form of a hand
+; - ns-resize : Up and down arrows, can be used to indicate scrolling
+cursor-click =
+cursor-scroll =
+
+[bar/polybar-i3-HDMI]
+;https://github.com/jaagr/polybar/wiki/Configuration
+
+monitor = HDMI-1
+monitor-fallback = DP-1
+monitor-strict = false
+override-redirect = false
+bottom = false
+fixed-center = true
+width = 100%
+height = 30
+;offset-x = 1%
+;offset-y = 1%
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+; Background gradient (vertical steps)
+;   background-[0-9]+ = #aarrggbb
+;background-0 =
+
+radius = 0.0
+line-size = 2
+line-color = #000000
+
+border-size = 0
+;border-left-size = 25
+;border-right-size = 25
+;border-top-size = 0
+;border-bottom-size = 25
+border-color = #000000
+
+padding-left = 1
+padding-right = 1
+
+module-margin-left = 0
+module-margin-right = 0
+
+;https://github.com/jaagr/polybar/wiki/Fonts
+font-0 = "UbuntuMono Nerd Font:size=12;2"
+font-1 = "UbuntuMono Nerd Font:size=12;3"
+font-2 = "FontAwesome:style=Regular"
+
+modules-left = i3 cac40
 modules-center = date
 modules-right = wireless-network delimiter networkspeedup networkspeeddown delimiter memory delimiter cpu delimiter battery delimiter backlight delimiter temperature-cpu delimiter 
 
@@ -552,6 +635,19 @@ format-background = ${colors.background}
 format-underline = #FFBB00
 label = %output%
 format-prefix = "   "
+format-suffix = " "
+format-prefix-foreground = #FFBB00
+
+
+[module/cac40]
+type = custom/script
+exec = /home/olivier/.config/polybar/get_cac40.sh
+interval = 10
+format-foreground = ${colors.foreground}
+format-background = ${colors.background}
+format-underline = #FFBB00
+label = %output%
+format-prefix = " CAC40  "
 format-suffix = " "
 format-prefix-foreground = #FFBB00
 
